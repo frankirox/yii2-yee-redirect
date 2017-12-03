@@ -17,30 +17,36 @@ $this->params['header-content'] = Html::a(Yii::t('yee', 'Add New'), ['create'], 
 
 <div class="box box-primary">
     <div class="box-body">
-<?php $pjax = Pjax::begin() ?>
+        <?php $pjax = Pjax::begin() ?>
 
-<?=
-GridView::widget([
-    'pjaxId' => $pjax->id,
-    'dataProvider' => $dataProvider,
-    'filterModel' => $searchModel,
-    'quickFilters' => false,
-    'columns' => [
-        ['class' => 'yeesoft\grid\CheckboxColumn', 'options' => ['style' => 'width:10px'], 'displayFilter' => false],
-        [
-            'attribute' => 'slug',
-            'class' => 'yeesoft\grid\columns\TitleActionColumn',
-            'title' => function (Redirect $model) {
-                return Html::a($model->slug, ['update', 'id' => $model->id], ['data-pjax' => 0]);
-            },
-            'buttonsTemplate' => '{update} {delete}',
-            'filterOptions' => ['colspan' => 2],
-        ],
-        'url',
-        'status_code',
-    ],
-]);
-?>
+        <?=
+        GridView::widget([
+            'pjaxId' => $pjax->id,
+            'dataProvider' => $dataProvider,
+            'filterModel' => $searchModel,
+            'quickFilters' => false,
+            'columns' => [
+                ['class' => 'yeesoft\grid\CheckboxColumn', 'options' => ['style' => 'width:10px'], 'displayFilter' => false],
+                [
+                    'attribute' => 'slug',
+                    'class' => 'yeesoft\grid\columns\TitleActionColumn',
+                    'title' => function (Redirect $model) {
+                        return Html::a($model->slug, ['update', 'id' => $model->id], ['data-pjax' => 0]);
+                    },
+                    'buttonsTemplate' => '{update} {delete}',
+                    'filterOptions' => ['colspan' => 2],
+                ],
+                [
+                    'attribute' => 'url',
+                    'options' => ['style' => 'width:50%']
+                ],
+                [
+                    'attribute' => 'status_code',
+                    'options' => ['style' => 'width:100px']
+                ],
+            ],
+        ]);
+        ?>
 
         <?php Pjax::end() ?>
     </div>
