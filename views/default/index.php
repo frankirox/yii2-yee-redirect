@@ -7,7 +7,7 @@ use yeesoft\redirect\models\Redirect;
 
 /* @var $this yii\web\View */
 /* @var $searchModel yeesoft\redirect\models\RedirectSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $dataProvider yeesoft\data\ActiveDataProvider */
 
 $this->title = Yii::t('yee/redirect', 'Redirects');
 $this->params['breadcrumbs'][] = $this->title;
